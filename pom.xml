@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>home Maven Webapp</name>
+    <name>CVSOne</name>
     <url>http://localhost</url>
 
     <properties>
