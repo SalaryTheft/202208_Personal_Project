@@ -1,0 +1,294 @@
+.title-area {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    line-height: 15px;
+    height: auto;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.title > h2 {
+    font-size: 46px;
+    font-weight: 600;
+}
+
+.title > h2 > ion-icon {
+    font-size: 62px;
+    color: rgb(255, 71, 71);
+    position: relative;
+    top: 14px;
+    z-index: 0;
+}
+
+.title > p.today-day {
+    position: absolute;
+    width: 30px;
+    top: 57px;
+    left: 16px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.main-card-area {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.card {
+    background-color: lightblue;
+    box-sizing: border-box;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.card > h3 {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 20px;
+}
+
+.card > h3 > ion-icon {
+    position: relative;
+    top: 5px;
+}
+
+.main-card {
+    width: calc(50% - 15px);
+    height: 100%;
+}
+
+.side-card-container {
+    width: calc(50% - 15px);
+    height: 100%;
+}
+
+.side-card {
+    width: 100%;
+    height: auto;
+}
+
+.side-card:first-child {
+    margin-bottom: 30px;
+}
+
+.wide-card-area {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin-bottom: 50px;
+}
+
+.wide-card {
+    width: auto;
+    height: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
+    background-color: #b65cdc;
+    /*background-image: url("../src/big_brother.jpg");*/
+    background-size: cover;
+    background-position: center center;
+}
+
+.wide-card > .text-area {
+    text-align: center;
+    color: white;
+}
+
+.wide-card > .text-area > h1 {
+    color: white;
+    /*text-shadow: 0px 0px 10px black;*/
+}
+
+.more {
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}
+
+.more-card-area {
+    width: calc(50% - 15px);
+}
+
+.more-card {
+    width: auto;
+    height: 300px;
+    padding: 20px 20px 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
+    cursor: pointer;
+}
+
+.more-card > h2 {
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.more-card-area:nth-child(1) > .more-card {
+    background-color: lightskyblue;
+    /*background-image: url("../src/incognito.png");*/
+    background-size: auto 100%;
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.more-card-area:nth-child(2) > .more-card {
+    background-color: rgb(255, 110, 110);
+    /*background-image: url("../src/security.png");*/
+    background-size: auto 100%;
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.shortcut-button {
+    background-color: black;
+    /* height: 1500px; */
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 25px;
+}
+
+.shortcut-button > ion-icon {
+    position: relative;
+    color: white;
+    font-size: 20px;
+    top: 5px;
+}
+
+.comment {
+    cursor: pointer;
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comment > .comment-content {
+    font-weight: 500;
+}
+
+.comment > .comment-product,
+.comment > .comment-writer {
+    font-size: 16px;
+}
+
+.post {
+    cursor: pointer;
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post > .post-category,
+.post > .post-title {
+    font-weight: 500;
+}
+
+.post > .post-writer,
+.post > .post-regdate {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1023px) {
+    .main-card-area {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 50px;
+    }
+
+    .main-card,
+    .side-card-container {
+        width: 100%;
+    }
+    .card,
+    .side-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .main-card,
+    .side-card:first-child {
+        margin-bottom: 30px;
+    }
+
+    /*.small-card {*/
+    /*    width: auto;*/
+    /*    height: auto;*/
+    /*    min-height: 150px;*/
+    /*    margin: 30px 0 0 0;*/
+    /*    padding: 20px;*/
+    /*}*/
+
+    /*.wide-card-area {*/
+    /*    margin-top: 50px;*/
+    /*}*/
+}
+
+@media screen and (max-width: 910px) {
+    /*#headline_subtitle {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*.big-card {*/
+    /*    height: 600px;*/
+    /*}*/
+
+    /*.big-card > .text-area {*/
+    /*    height: 300px;*/
+    /*}*/
+
+    /*.big-card > .img {*/
+    /*    width: 100%;*/
+    /*    height: calc(100% - 350px);*/
+    /*}*/
+
+    /*.more-card > h2 {*/
+    /*    font-size: 25px;*/
+    /*    font-weight: 600;*/
+    /*    line-height: 35px;*/
+    /*}*/
+}
+
+@media (prefers-color-scheme: dark) {
+    .card,
+    .more-card {
+        background-color: rgb(64, 64, 64);
+        box-shadow: 0px 3px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .card *,
+    .more-card * {
+        color: white;
+    }
+
+    .wide-card {
+        /*background-image: url("../src/big_brother_dark.jpg");*/
+        background-size: cover;
+        background-position: center center;
+        background-color: #993dba;;
+    }
+
+    .more-card-area:nth-child(1) > .more-card {
+        background-color: rgb(0, 75, 141);
+    }
+
+    .more-card-area:nth-child(2) > .more-card {
+        background-color: rgb(169, 66, 66);
+    }
+}

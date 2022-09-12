@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cvsone.comment.dao.IPrdCommentDAO">
+    <select id="getCommentList" parameterType="com.cvsone.product.vo.ProductVO"
+            resultType="com.cvsone.comment.vo.PrdCommentVO">
+        SELECT
+            *
+        FROM
+            P3_PRD_COMMENTS
+        WHERE 1 = 1
+          AND PRD_NAME = #{prdName}
+        ORDER BY
+            COMMENT_REGDATE ASC
+    </select>
+
+    <insert id="insertComment" parameterType="com.cvsone.comment.vo.PrdCommentVO">
+        INSERT INTO
+            P3_PRD_COMMENTS (
+                PRD_NAME,
+                USER_ID,
+                COMMENT_CONTENT,
+                COMMENT_UUID
+            )
+        VALUES (
+            #{prdName},
+            #{userId},
+            #{commentContent},
+            #{commentUuid}
+        )
+    </insert>
+
+    <delete id="deleteCommentByUuid" parameterType="String">
+        DELETE
+        FROM
+            P3_PRD_COMMENTS
+        WHERE 1=1
+            AND COMMENT_UUID = #{commentUuid}
+    </delete>
+
+    <select id="getCommentByUuid" parameterType="String" resultType="com.cvsone.comment.vo.PrdCommentVO">
+        SELECT
+            *
+        FROM
+            P3_PRD_COMMENTS
+        WHERE 1=1
+            AND COMMENT_UUID = #{commentUuid}
+    </select>
+
+    <update id="updateComment" parameterType="com.cvsone.comment.vo.PrdCommentVO">
+        UPDATE
+            P3_PRD_COMMENTS
+        SET
+            COMMENT_CONTENT = #{commentContent}
+        WHERE 1=1
+            AND COMMENT_UUID = #{commentUuid}
+    </update>
+
+    <select id="getRecentCommentList" resultType="com.cvsone.comment.vo.PrdCommentVO">
+        SELECT * FROM (
+
+        SELECT
+            *
+        FROM
+            P3_PRD_COMMENTS
+        ORDER BY
+            COMMENT_REGDATE DESC
+
+        ) WHERE ROWNUM <![CDATA[<=]]> 3
+    </select>
+</mapper>

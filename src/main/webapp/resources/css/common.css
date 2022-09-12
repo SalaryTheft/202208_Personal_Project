@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+
+html {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    scroll-behavior: smooth;
+}
+
+* {
+    --max-content-width: 1296px;
+    color: black;
+    word-break: keep-all;
+}
+
+*:focus {
+    outline: none;
+}
+
+.container {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+mark {
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.header {
+    margin: 0 auto;
+    width: calc(100% - 50px);
+    max-width: var(--max-content-width);
+    height: 60px;
+    display: flex;
+}
+
+.logo-area {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-area > h3 {
+    width: auto;
+    font-size: 28px;
+    margin: 0 40px 0 0;
+    transition: all 0.1s ease;
+    font-weight: 500;
+}
+
+.menu-area {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menu-area > a {
+    margin: 0 auto;
+    padding: 4px 12px 4px 12px;
+    margin: 0 40px 0 0;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.1s ease;
+}
+
+.menu-area > a:hover {
+    border-radius: 100px;
+    background: lightgray;
+}
+
+.icon-area {
+    margin-left: auto;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.icon-area > ion-icon {
+    padding: 8px;
+    font-size: 24px;
+    margin: 0 0 0 20px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.icon-area > ion-icon:hover {
+    border-radius: 100px;
+    background: lightgray;
+}
+
+/* 반응현 햄버거 메뉴 */
+#hamburger-toggle {
+    display: none;
+}
+
+.hamburger-menu {
+    display: flex;
+    display: none;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+}
+
+.hamburger-menu > a {
+    margin: 0 auto;
+    padding: 4px 12px 4px 12px;
+    margin: 0 10px 0 10px;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.1s ease;
+}
+
+.search {
+    display: none;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+}
+
+.search > form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.search > form > input {
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 100px;
+    background: lightgray;
+    padding: 8px 12px 8px 12px;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.1s ease;
+}
+
+.search > form > input:focus {
+    outline: none;
+}
+
+.search > form > button {
+    width: 30px;
+    height: 30px;
+    font-size: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.search > form > button > ion-icon {
+    position: relative;
+    top: -4px;
+}
+
+.body {
+    margin: 0 auto;
+    width: calc(100% - 50px);
+    max-width: var(--max-content-width);
+}
+
+.container > hr {
+    margin: 50px 0 0 0;
+    border: 1px solid lightgray;
+}
+
+.footer {
+    margin: 0 auto;
+    width: calc(100% - 50px);
+    max-width: var(--max-content-width);
+    height: 100px;
+    display: flex;
+}
+
+.footer-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.footer-button-area {
+    margin-left: auto;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.footer-button-area > ion-icon {
+    padding: 8px;
+    font-size: 24px;
+    margin: 0 0 0 20px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.footer-button-area > ion-icon:hover {
+    border-radius: 100px;
+    background: lightgray;
+}
+
+ion-icon:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 910px) {
+    .menu-area {
+        display: none;
+    }
+
+    #hamburger-toggle {
+        display: block;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: rgb(30, 30, 30);
+    }
+
+    * {
+        color: white;
+    }
+
+    button {
+        color: black;
+    }
+
+    .container > hr {
+        border: 1px solid rgb(64, 64, 64);
+    }
+
+    .menu-area > a:hover,
+    .icon-area > ion-icon:hover {
+        background: rgb(64, 64, 64);
+    }
+
+    .search > form > input {
+        background-color: rgb(64, 64, 64);
+        color: white;
+    }
+
+    #go-top-btn:hover {
+        background: rgb(64, 64, 64);
+    }
+}

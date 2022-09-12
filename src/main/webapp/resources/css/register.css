@@ -1,0 +1,236 @@
+.title-area {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    line-height: 15px;
+    height: auto;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.title>h2 {
+    font-size: 46px;
+    font-weight: 600;
+}
+
+.title>h2>ion-icon {
+    font-size: 62px;
+    color: #2173ff;
+    position: relative;
+    top: 14px;
+}
+
+.title>h3 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.tabs-area {
+    width: 100%;
+    height: 4auto;
+    display: block;
+    /* background-color: lightblue; */
+    margin-bottom: 50px;
+
+}
+
+.tabs-area>.tabs {
+    width: auto;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+}
+
+.tabs-area>.tabs>li {
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.tabs-area>.tabs>li>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 17px;
+    margin: 4px 12px 4px 0;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 30px;
+    text-decoration: none;
+    background-color: lightgray;
+}
+
+.tabs-area>.tabs>li:first-child>a {
+    background-color: black;
+    color: white;
+    font-weight: 500;
+}
+
+.wide-card-area {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin-bottom: 50px;
+}
+
+.wide-card {
+    width: auto;
+    height: auto;
+    padding: 20px 20px 20px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    background-size: cover;
+    background-position: center center;
+}
+
+.wide-card>*:not(img) {
+    width: 100%;
+    height: 100%;
+}
+
+.wide-card>pre {
+    width: 100%;
+    height: 300px;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    overflow: auto;
+    font-size: 16px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+form:not(#search-input) {
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+form>label {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+form>label>input:not([type="checkbox"]) {
+    width: 350px;
+    max-width: 50%;
+    height: 44px;
+    border-radius: 30px;
+    border: 1px solid lightgray;
+    padding: 0 10px;
+    margin: 10px 10px 15px 0;
+    font-size: 16px;
+    font-weight: 400;
+    background: lightgray;
+}
+
+form>button {
+    width: 100px;
+    height: 44px;
+    border-radius: 30px;
+    border: 1px solid lightgray;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 400;
+    background: lightgray;
+    cursor: pointer;
+}
+
+form>label>select {
+    width: 370px;
+    max-width: calc(50% + 20px);
+    height: 44px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 10px;
+    margin: 10px 10px 15px 0;
+    font-size: 16px;
+    font-weight: 400;
+    background: lightgray;
+    appearance: none;
+}
+
+form>input[type="submit"] {
+    margin-top: 20px;
+    width: 100px;
+    height: 44px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 400;
+    background: #2173ff;
+    color: white;
+    cursor: pointer;
+}
+
+.blue {
+    background: #2173ff !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.red {
+    background: #ff2121 !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+
+@media screen and (max-width:1023px) {
+    .wide-card-area {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width:910px) {
+    /*     #news-table .writer {
+        display: none;
+        visibility: hidden;
+        width: 0%;
+    } */
+}
+
+@media (prefers-color-scheme: dark) {
+    .wide-card {
+        background-color: rgb(64, 64, 64);
+        box-shadow: 0px 3px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .wide-card>* {
+        color: white;
+    }
+
+    .tabs-area>.tabs>li>a {
+        color: white;
+        background-color: gray;
+    }
+
+    .tabs-area>.tabs>li:first-child>a {
+        background-color: white;
+        color: black;
+    }
+
+    form>label>input,
+    form>label>select {
+        background: rgb(30, 30, 30) !important;
+        border: none !important;
+    }
+
+    :not(#search-input)form>button {
+        background: white !important;
+        color: black !important;
+        font-weight: 400 !important;
+        border: none !important;
+    }
+
+}

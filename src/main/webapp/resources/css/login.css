@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+
+html {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+}
+
+*:focus {
+    outline: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: lightblue; */
+}
+
+.login_card {
+    width: 100%;
+    max-width: 370px;
+    height: 500px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login_card>h1 {
+    font-size: 46px;
+    font-weight: 400;
+    padding: 30px 0;
+}
+
+#login_form input.idpw {
+    width: calc(100% - 40px);
+    height: 40px;
+    border: none;
+    border-radius: 40px;
+    background: lightgray;
+    /* padding: 8px 12px 8px 12px; */
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+#login_form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 20px;
+    background: lightgray;
+    /* padding: 8px 12px 8px 12px; */
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+#login_form label {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#login_form input[type="submit"] {
+    width: auto;
+    height: 40px;
+    border: none;
+    border-radius: 40px;
+    background: #2173ff;
+    color: white;
+    /* padding: 8px 12px 8px 12px; */
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: rgb(30, 30, 30);
+    }
+
+    * {
+        color: white;
+    }
+
+    .login_card {
+        background-color: rgb(64, 64, 64);
+        box-shadow: 0px 3px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    #login_form input.idpw {
+        background-color: rgb(30, 30, 30);
+        color: white;
+    }
+
+    #login_form input.idpw::placeholder {
+        color: gray;
+    }
+}

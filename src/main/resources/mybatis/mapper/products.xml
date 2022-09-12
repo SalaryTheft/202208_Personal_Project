@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cvsone.product.dao.IProductDAO">
+    <select id="getProductCount" parameterType="com.cvsone.common.vo.SearchVO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            P3_PRODUCTS
+        WHERE 1=1
+        <if test="keyword != null and keyword != ''">
+            AND LOWER(PRD_NAME) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="category != null and category != ''">
+            AND PRD_EVENT_TYPE = #{category}
+        </if>
+    </select>
+
+    <select id="getProductList" parameterType="com.cvsone.common.vo.SearchVO" resultType="com.cvsone.product.vo.ProductVO">
+        SELECT * FROM (
+        SELECT a.*, ROWNUM as RNUM FROM (
+
+        SELECT prd.*,
+               (SELECT COUNT(*)
+                FROM P3_PRD_COMMENTS cmt
+                WHERE cmt.PRD_NAME = prd.PRD_NAME) AS COMMENT_COUNT
+        FROM P3_PRODUCTS prd
+        WHERE 1=1
+        <if test="keyword != null and keyword != ''">
+            AND LOWER(PRD_NAME) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="category != null and category != ''">
+            AND PRD_EVENT_TYPE = #{category}
+        </if>
+        ORDER BY COMMENT_COUNT DESC, PRD_NAME ASC
+
+        )a ) b WHERE RNUM BETWEEN #{firstRow} AND #{lastRow}
+    </select>
+
+    <select id="getProductByName" parameterType="String" resultType="com.cvsone.product.vo.ProductVO">
+        SELECT prd.*,
+               (SELECT COUNT(*) FROM P3_PRD_COMMENTS cmt WHERE cmt.PRD_NAME = prd.PRD_NAME) AS COMMENT_COUNT
+        FROM P3_PRODUCTS prd
+        WHERE 1 = 1
+          AND prd.PRD_NAME = #{productName}
+    </select>
+
+    <select id="getSampleString" resultType="String">
+        SELECT 'Hello World' as samplestring
+        FROM dual
+    </select>
+
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cvsone.board.dao.IPostDAO">
+    <insert id="insertPost" parameterType="com.cvsone.board.vo.PostVO">
+        INSERT INTO
+            JSP.P3_BOARD (
+                POST_NO,
+                USER_ID,
+                POST_TITLE,
+                POST_CATEGORY,
+                POST_CONTENT,
+                POST_HIT,
+                POST_REGDATE,
+                POST_DEL_YN
+            )
+        VALUES (
+            P3_BOARD_SEQ.NEXTVAL,
+            #{userId},
+            #{postTitle},
+            #{postCategory},
+            #{postContent},
+            0,
+            SYSDATE,
+            'N'
+        )
+    </insert>
+
+    <update id="updatePost" parameterType="com.cvsone.board.vo.PostVO">
+        UPDATE
+            JSP.P3_BOARD
+        SET
+            POST_TITLE = #{postTitle},
+            POST_CATEGORY = #{postCategory},
+            POST_CONTENT = #{postContent}
+        WHERE 1=1
+            AND POST_NO = #{postNo}
+    </update>
+
+    <delete id="deletePost" parameterType="com.cvsone.board.vo.PostVO">
+        DELETE
+        FROM
+            JSP.P3_BOARD
+        WHERE 1=1
+            AND POST_NO = #{postNo}
+    </delete>
+
+    <select id="getPostByNo" parameterType="int" resultType="com.cvsone.board.vo.PostVO">
+        SELECT
+            bo.*,
+            (SELECT COUNT(*)
+             FROM P3_POST_COMMENTS cmt
+             WHERE cmt.POST_NO = bo.POST_NO) AS COMMENT_COUNT
+        FROM
+            JSP.P3_BOARD bo
+        WHERE
+            POST_NO = #{postNo}
+    </select>
+
+    <select id="getPostList" parameterType="com.cvsone.common.vo.SearchVO" resultType="com.cvsone.board.vo.PostVO">
+        -- 페이징
+        SELECT * FROM (
+        SELECT a.*, ROWNUM as RNUM FROM (
+
+        SELECT
+            bo.*,
+            (SELECT COUNT(*)
+            FROM P3_POST_COMMENTS cmt
+            WHERE cmt.POST_NO = bo.POST_NO) AS COMMENT_COUNT
+        FROM
+            JSP.P3_BOARD bo
+        WHERE 1=1
+        <if test="category != null and category != ''">
+            AND POST_CATEGORY = #{category}
+        </if>
+        <if test="type == 'writer'">
+            AND LOWER(USER_ID) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="type == 'title'">
+            AND LOWER(POST_TITLE) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="type == 'content'">
+            AND LOWER(POST_CONTENT) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        ORDER BY
+            POST_NO DESC
+
+        )a ) b WHERE RNUM BETWEEN #{firstRow} AND #{lastRow}
+    </select>
+
+    <select id="getPostCount" parameterType="com.cvsone.common.vo.SearchVO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            P3_BOARD
+        WHERE 1=1
+        <if test="category != null and category != ''">
+            AND POST_CATEGORY = #{category}
+        </if>
+        <if test="type == 'writer'">
+            AND LOWER(USER_ID) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="type == 'title'">
+            AND LOWER(POST_TITLE) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+        <if test="type == 'content'">
+            AND LOWER(POST_CONTENT) LIKE '%'||LOWER(#{keyword})||'%'
+        </if>
+    </select>
+
+    <select id="getRecentPostList" resultType="com.cvsone.board.vo.PostVO">
+        SELECT * FROM (
+
+          SELECT
+              bo.*,
+              (SELECT COUNT(*)
+               FROM P3_POST_COMMENTS cmt
+               WHERE cmt.POST_NO = bo.POST_NO) AS COMMENT_COUNT
+          FROM
+              P3_BOARD bo
+          ORDER BY
+              "POST_NO" DESC
+
+      ) WHERE ROWNUM <![CDATA[<=]]> 3
+    </select>
+
+    <update id="increaseHit" parameterType="com.cvsone.board.vo.PostVO">
+        UPDATE
+            JSP.P3_BOARD
+        SET
+            POST_HIT = POST_HIT + 1
+        WHERE 1=1
+            AND POST_NO = #{postNo}
+    </update>
+</mapper>
